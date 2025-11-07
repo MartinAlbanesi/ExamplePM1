@@ -4,7 +4,7 @@ import com.example.examplepm1.data.models.Item
 
 object SimpleItemRepository {
 
-    // A private list of mocked data.
+    // Lista de datos mockeados
     private val items = listOf(
         Item(1, "Item 1", "Descripción del item 1"),
         Item(2, "Item 2", "Descripción del item 2"),

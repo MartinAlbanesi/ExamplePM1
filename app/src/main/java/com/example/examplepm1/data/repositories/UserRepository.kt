@@ -20,11 +20,9 @@ object UserRepository {
     }
 
     fun login(nickName: String, password: String): User? {
-        // Esta validación se puede simplificar.
         if (nickName.isEmpty() || password.isEmpty()) {
             return null
         }
-        // Ahora 'users' contiene los datos y la búsqueda funcionará.
         return users.find { it.nickname == nickName && it.password == password }
     }
 }

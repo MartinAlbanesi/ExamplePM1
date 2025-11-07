@@ -19,7 +19,7 @@ class Screen1Activity : AppCompatActivity() {
         setContentView(R.layout.activity_screen1)
 
         recyclerView = findViewById(R.id.simple_recycler_view)
-        backButton = findViewById(R.id.back_button) // Find the button by its ID
+        backButton = findViewById(R.id.back_button)
 
         // Setea la configuración del RecyclerView, en este caso la posición de los items
         recyclerView.layoutManager = LinearLayoutManager(this)

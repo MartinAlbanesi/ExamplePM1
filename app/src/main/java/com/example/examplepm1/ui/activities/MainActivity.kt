@@ -19,16 +19,19 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        // Configuración de la barra de insets para que se adapte a los cambios de tamaño de la pantalla
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        // Configuración de los botones de navegación inferior
         setupThemeChangeButton()
         setupBottomNavigation()
     }
 
+    // Configuración del botón para cambiar el tema
     private fun setupThemeChangeButton() {
         val themeChangeButton: FloatingActionButton = findViewById(R.id.theme_change_button)
 
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Configuración de la navegación inferior
     private fun setupBottomNavigation() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
