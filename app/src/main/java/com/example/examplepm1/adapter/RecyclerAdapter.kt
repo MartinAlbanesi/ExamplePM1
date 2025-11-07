@@ -19,7 +19,6 @@ class SimpleAdapter(private val items: List<Item>) :
 
     // Se llama cuando el RecyclerView necesita un nuevo ViewHolder para representar un elemento.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleViewHolder {
-        // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_sample_layout, parent, false)
         return SimpleViewHolder(view)
