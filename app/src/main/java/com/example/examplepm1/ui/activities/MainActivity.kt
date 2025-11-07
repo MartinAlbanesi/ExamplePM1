@@ -1,4 +1,4 @@
-package com.example.examplepm1.activities
+package com.example.examplepm1.ui.activities
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -18,16 +18,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        setupThemeChangeButton()
+        setupBottomNavigation()
+    }
+
+    private fun setupThemeChangeButton() {
         val themeChangeButton: FloatingActionButton = findViewById(R.id.theme_change_button)
 
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+        val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
+
+        if (isNightMode) {
             themeChangeButton.setImageResource(R.drawable.ic_sun)
         } else {
             themeChangeButton.setImageResource(R.drawable.ic_moon)
@@ -41,13 +49,18 @@ class MainActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }
+    }
 
+    private fun setupBottomNavigation() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
         bottomNavigationView.selectedItemId = R.id.navigation_main
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
                 R.id.navigation_screen1 -> {
-                    startActivity(Intent(this, Screen1Activity::class.java))
+                    val intent = Intent(this, Screen1Activity::class.java)
+                    startActivity(intent)
                     true
                 }
 
@@ -56,7 +69,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.navigation_screen2 -> {
-                    startActivity(Intent(this, Screen2Activity::class.java))
+                    val intent = Intent(this, Screen2Activity::class.java)
+                    startActivity(intent)
                     true
                 }
 
